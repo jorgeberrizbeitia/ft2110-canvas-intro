@@ -77,5 +77,73 @@ ctx.fillText( "Hello", 300, 300 );
 
 
 
+// images
+
+let img = new Image();
+img.src = "https://tinyurl.com/ironhack-pokemons/5.svg"
+
+img.addEventListener("load", () => {
+  ctx.drawImage( img, 300, 360, 80, 100 );
+})
+
+let img2 = new Image();
+img2.src = "https://tinyurl.com/ironhack-pokemons/21.svg";
+
+img2.addEventListener("load", () => {
+  ctx.drawImage( img2, 400, 360, 80, 100 );
+})
+
+
+
+// RECURSION
+
+// let controlVar = 0;
+
+// function printSomething() {
+
+//   controlVar++;
+//   console.log("printing");
+
+//   if (controlVar < 100) {
+//     printSomething();
+//   }
+
+// }
+
+// printSomething();
+
+let cubeX = 50;
+let cubeY = 720;
+let cubeSpeed = 10;
+let shouldCubeMove = true;
+
+function cubeMovement() {
+
+  // 1. clearing the canvas
+  ctx.clearRect( 0, 0, canvas.width, canvas.height );
+
+  // 2. movement or changes in elements
+  cubeX = cubeX + cubeSpeed 
+  cubeY = cubeY - cubeSpeed
+  // cubeX++
+
+  if (cubeX > 400) {
+    shouldCubeMove = false;
+  }
+
+  // 3 drawing the elements
+  ctx.fillStyle = "black";
+  ctx.fillRect( cubeX, cubeY, 50, 50 );
+
+
+  // 4 requestAnimationFrame control the game flow
+  if (shouldCubeMove) {
+    // cubeMovement();
+    requestAnimationFrame(cubeMovement);
+  }
+
+}
+
+cubeMovement()
 
 
